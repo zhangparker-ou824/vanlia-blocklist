@@ -1,0 +1,16 @@
+www.baidu.com
+tieba.baidu.com
+wenku.baidu.com
+zhidao.baidu.com
+baike.baidu.com
+baijiahao.baidu.com
+image.baidu.com
+news.baidu.com
+video.baidu.com
+map.baidu.com
+music.baidu.com
+passport.baidu.com
+m.baidu.com
+index.baidu.com
+top.baidu.com
+home.baidu.com
