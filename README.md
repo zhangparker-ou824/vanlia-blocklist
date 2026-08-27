@@ -2,9 +2,11 @@
 仓库网站：https://github.com/zhangparker-ou824/vanlia-blocklist/
 在这里可以找到Baidu/Google/Yahoo的所有服务屏蔽表
 现在开始找吧！
-
-
-
-
+<p></p>
+<p></p>
+注意！作者有可能废弃这个库，如果废弃请用其他的拦截器列表
+<p></p>
+<p></p>
+<p></p>
 免责声明
 使用本拦截列表的风险由使用者自行承担。
