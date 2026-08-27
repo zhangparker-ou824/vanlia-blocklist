@@ -1,0 +1,3 @@
+amp-api-ads.apps.apple.com
+js-cdn.music.apple.com
+api-glb-sea.smoot.apple.com
