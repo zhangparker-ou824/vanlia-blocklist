@@ -1,0 +1,53 @@
+name: Check Blocklist
+on:
+  push:
+    branches: [ "main", "blocklist" ]
+  pull_request:
+    branches: [ "main", "blocklist" ]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate blocklist files
+        run: |
+          set -e
+          echo "=== 开始校验所有 txt 规则文件 ==="
+          total_rules=0
+          declare -A domain_set
+          find . -type f -name "*.txt" ! -path "./.git/*" | while read -r file; do
+            echo ""
+            echo "File: $file"
+            rules=$(grep '^||' "$file" || true)
+            count=$(echo "$rules" | wc -l)
+            total_rules=$((total_rules + count))
+            echo "规则条数: $count"
+            bad_lines=$(grep '^||$' "$file" || true)
+            if [[ -n "$bad_lines" ]]; then
+              echo "❌ 错误：存在 || 空规则行"
+              exit 1
+            fi
+
+            dup_in_file=$(echo "$rules" | sort | uniq -d)
+            if [[ -n "$dup_in_file" ]]; then
+              echo "⚠️ 文件内重复域名："
+              echo "$dup_in_file"
+            fi
+
+            while IFS= read -r line; do
+              [[ -z "$line" ]] && continue
+              if [[ -n "${domain_set[$line]}" ]]; then
+                echo "⚠️ 跨文件重复：$line"
+              else
+                domain_set["$line"]=1
+              fi
+            done <<< "$rules"
+
+          done
+          echo ""
+          echo "=== 校验完成 ==="
+          echo "总规则粗略计数：$total_rules"
