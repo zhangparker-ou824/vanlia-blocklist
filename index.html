@@ -13,113 +13,227 @@
       --border:#e5e7eb;
       --link:#0969da;
       --code:#1f2937;
-      --code‑fg:#e5e7eb;
+      --code-fg:#e5e7eb;
+      --success:#1a7f37;
     }
-    [data‑theme="dark"]{
+    [data-theme="dark"]{
       --bg:#0d1117;
       --fg:#f0f6fc;
       --card:#161b22;
       --border:#30363d;
       --link:#58a6ff;
       --code:#21262d;
-      --code‑fg:#c9d1d9;
+      --code-fg:#c9d1d9;
+      --success:#3fb950;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{
-      font-family:system‑ui,‑apple‑system,BlinkMacSystemFont,"Segoe UI",Roboto;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
       background:var(--bg);
       color:var(--fg);
-      max‑width:960px;
+      max-width:960px;
       margin:0 auto;
       padding:24px 16px;
-      line‑height:1.65;
+      line-height:1.65;
     }
-    header{margin‑bottom:32px}
-    h1{font‑size:1.8rem;margin‑bottom:8px}
-    .desc{color:#8b949e;margin‑bottom:16px}
-    a{color:var(--link);text‑decoration:none}
-    a:hover{text‑decoration:underline}
+    header{margin-bottom:32px;text-align:center}
+    h1{font-size:1.8rem;margin-bottom:8px}
+    .desc{color:#8b949e;margin-bottom:16px}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .badge-group{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-bottom:20px;
+    }
+    .badge{
+      font-size:0.8rem;
+      padding:4px 10px;
+      border-radius:20px;
+      border:1px solid var(--border);
+      background:var(--card);
+    }
     .card{
       background:var(--card);
       border:1px solid var(--border);
-      border‑radius:8px;
-      padding:16px;
-      margin‑bottom:16px;
+      border-radius:8px;
+      padding:18px;
+      margin-bottom:16px;
     }
     .item{
       display:flex;
       gap:10px;
-      align‑items:center;
-      flex‑wrap:wrap;
-      margin‑bottom:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom:12px;
     }
-    .url‑box{
+    .url-box{
       flex:1 1 300px;
-      font‑family:ui‑monospace,Menlo,Monaco,Consolas;
-      font‑size:13px;
+      font-family:ui-monospace,Menlo,Monaco,Consolas;
+      font-size:13px;
       background:var(--code);
-      color:var(--code‑fg);
+      color:var(--code-fg);
       padding:8px 10px;
-      border‑radius:6px;
-      overflow‑x:auto;
+      border-radius:6px;
+      overflow-x:auto;
     }
     button{
       padding:7px 12px;
-      border‑radius:6px;
+      border-radius:6px;
       border:1px solid var(--border);
       background:var(--card);
       color:var(--fg);
       cursor:pointer;
-      white‑space:nowrap;
+      white-space:nowrap;
+      transition:0.2s;
     }
     button:hover{filter:brightness(1.15)}
-    .tip{font‑size:0.9rem;color:#8b949e;margin‑top:6px}
-    footer{margin‑top:40px;font‑size:0.85rem;color:#8b949e}
+    button.copied{
+      border-color:var(--success);
+      color:var(--success);
+    }
+    .tip{font-size:0.9rem;color:#8b949e;margin-top:6px}
+    ul{padding-left:22px;margin-top:8px;margin-bottom:8px}
+    footer{
+      margin-top:40px;
+      font-size:0.85rem;
+      color:#8b949e;
+      text-align:center;
+      padding-top:20px;
+      border-top:1px solid var(--border);
+    }
+    .input-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:10px 0;
+    }
+    #path-input{
+      flex:1 1 260px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:6px;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:ui-monospace,Menlo,Monaco,Consolas;
+    }
+    .example-path{
+      font-family:ui-monospace,Menlo,Monaco,Consolas;
+      font-size:13px;
+      margin:4px 0;
+    }
   </style>
 </head>
 <body>
 <header>
   <h1>vanlia‑blocklist</h1>
-  <p class="desc">多厂商广告、遥测、追踪域名拦截列表，兼容 uBlock‑Origin / AdGuard / Pi‑hole</p>
-  <p>仓库：<a target="_blank" href="https://github.com/zhangparker-ou824/vanlia-blocklist/tree/main">https://github.com/zhangparker-ou824/vanlia-blocklist/tree/main</a></p>
+  <p class="desc">多厂商广告、遥测、追踪域名拦截列表<br>兼容 uBlock‑Origin / AdGuard / Pi‑hole / AdGuard Home</p>
+  <div class="badge-group">
+    <span class="badge">📖 开源项目</span>
+    <span class="badge">⚙️ GitHub Actions CI校验</span>
+    <span class="badge">🔗 uBlock格式</span>
+  </div>
+  <p>仓库：<a target="_blank" href="https://github.com/zhangparker-ou824/vanlia-blocklist/tree/main">github.com/zhangparker‑ou824/vanlia‑blocklist/tree/main</a></p>
 </header>
 
 <div class="card">
-  <h3>📦 订阅链接（raw）</h3>
+  <h3>📦 订阅链接（Raw）</h3>
   <div class="item">
-    <div class="url‑box" id="u‑yahoo‑all">https://raw.githubusercontent.com/zhangparker‑ou824/vanlia‑blocklist/blocklist/yahoo/yahoo‑all.txt</div>
-    <button onclick="copy('u‑yahoo‑all')">复制</button>
+    <div class="url-box" id="u-yahoo-all">https://raw.githubusercontent.com/zhangparker-ou824/vanlia-blocklist/blocklist/yahoo/yahoo-all.txt</div>
+    <button onclick="copy('u-yahoo-all',this)">复制</button>
   </div>
   <div class="tip">yahoo‑all.txt：广告+追踪遥测（可能破坏部分Yahoo服务）</div>
 
   <div class="item">
-    <div class="url‑box" id="u‑yahoo‑ads">https://raw.githubusercontent.com/zhangparker‑ou824/vanlia‑blocklist/blocklist/yahoo/yahoo‑ads.txt</div>
-    <button onclick="copy('u‑yahoo‑ads')">复制</button>
+    <div class="url-box" id="u-yahoo-ads">https://raw.githubusercontent.com/zhangparker-ou824/vanlia-blocklist/blocklist/yahoo/yahoo-ads.txt</div>
+    <button onclick="copy('u-yahoo-ads',this)">复制</button>
   </div>
   <div class="tip">yahoo‑ads.txt：仅广告域名，破坏性更小</div>
 </div>
 
 <div class="card">
+  <h3>🔧 自定义订阅链接生成器</h3>
+  <p class="tip">基础地址：<code>https://raw.githubusercontent.com/zhangparker-ou824/vanlia-blocklist/blocklist/</code></p>
+  <p class="tip">在下方输入库内文件路径 <code>xxx/xxx/xxx.txt</code>，例如：</p>
+  <div class="example-path">music/spotify/spotify-ads.txt</div>
+  <div class="example-path">yahoo/yahoo-all.txt</div>
+  <div class="example-path">baidu/baidu-ads.txt</div>
+  <div class="input-row">
+    <input id="path-input" placeholder="输入：xxx/xxx/xxx.txt">
+    <button onclick="genUrl()">生成链接</button>
+  </div>
+  <div class="item">
+    <div class="url-box" id="custom-out"></div>
+    <button id="custom-copy-btn" onclick="copyCustom()">复制</button>
+  </div>
+</div>
+
+<div class="card">
   <h3>ℹ 使用说明</h3>
-  <ul style="padding‑left:20px;margin‑top:8px">
+  <ul>
     <li>uBlock‑Origin：设置 → 过滤器 → 导入，粘贴 raw 链接</li>
     <li>AdGuard Home：过滤器 → 添加自定义过滤器</li>
     <li>Pi‑hole：添加为自定义 blocklist</li>
+    <li>AdGuard：自定义过滤器，填入订阅地址</li>
   </ul>
   <div class="tip">⚠️ 本项目为个人维护，存在随时停更风险；使用风险由使用者自行承担。</div>
 </div>
 
-<footer>vanlia‑blocklist © 2026 | Powered by GitHub Pages</footer>
+<div class="card">
+  <h3>🧾 开源信息</h3>
+  <ul>
+    <li>本项目完全开源，欢迎查看源码、提交Issue讨论</li>
+    <li>规则文件存放于 <code>blocklist</code> 分支，main为项目主仓库界面</li>
+    <li>CI自动校验规则格式，防止错误规则入库</li>
+    <li>不提供任何担保，所有使用行为风险由用户承担</li>
+  </ul>
+</div>
+
+<footer>
+vanlia‑blocklist © 2026 • 本项目开源，基于 GitHub Pages 部署
+</footer>
 
 <script>
-function copy(id){
+const BASE_RAW = "https://raw.githubusercontent.com/zhangparker-ou824/vanlia-blocklist/blocklist/";
+
+function copy(id,btnEl){
   const el = document.getElementById(id);
   const text = el.innerText.trim();
   navigator.clipboard.writeText(text).then(()=>{
-    const btn = el.nextElementSibling;
+    const oldText = btnEl.innerText;
+    btnEl.innerText = "已复制!";
+    btnEl.classList.add("copied");
+    setTimeout(()=>{
+      btnEl.innerText = oldText;
+      btnEl.classList.remove("copied");
+    },1200);
+  })
+}
+
+function genUrl(){
+  const path = document.getElementById("path-input").value.trim();
+  const out = document.getElementById("custom-out");
+  if(!path){
+    out.innerText = "请输入文件路径 xxx/xxx/xxx.txt";
+    return;
+  }
+  out.innerText = BASE_RAW + path;
+}
+
+function copyCustom(){
+  const text = document.getElementById("custom-out").innerText.trim();
+  if(!text || text === "请输入文件路径 xxx/xxx/xxx.txt") return;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.getElementById("custom-copy-btn");
     const old = btn.innerText;
     btn.innerText = "已复制!";
-    setTimeout(()=>btn.innerText = old,1200);
+    btn.classList.add("copied");
+    setTimeout(()=>{
+      btn.innerText = old;
+      btn.classList.remove("copied");
+    },1200);
   })
 }
 </script>
