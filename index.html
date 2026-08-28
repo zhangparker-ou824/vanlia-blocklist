@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>vanlia‑blocklist | 广告&追踪域名拦截列表</title>
+  <script>document.documentElement.dataset.theme = window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"</script>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#222222;
+      --card:#f6f8fa;
+      --border:#e5e7eb;
+      --link:#0969da;
+      --code:#1f2937;
+      --code‑fg:#e5e7eb;
+    }
+    [data‑theme="dark"]{
+      --bg:#0d1117;
+      --fg:#f0f6fc;
+      --card:#161b22;
+      --border:#30363d;
+      --link:#58a6ff;
+      --code:#21262d;
+      --code‑fg:#c9d1d9;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system‑ui,‑apple‑system,BlinkMacSystemFont,"Segoe UI",Roboto;
+      background:var(--bg);
+      color:var(--fg);
+      max‑width:960px;
+      margin:0 auto;
+      padding:24px 16px;
+      line‑height:1.65;
+    }
+    header{margin‑bottom:32px}
+    h1{font‑size:1.8rem;margin‑bottom:8px}
+    .desc{color:#8b949e;margin‑bottom:16px}
+    a{color:var(--link);text‑decoration:none}
+    a:hover{text‑decoration:underline}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border‑radius:8px;
+      padding:16px;
+      margin‑bottom:16px;
+    }
+    .item{
+      display:flex;
+      gap:10px;
+      align‑items:center;
+      flex‑wrap:wrap;
+      margin‑bottom:10px;
+    }
+    .url‑box{
+      flex:1 1 300px;
+      font‑family:ui‑monospace,Menlo,Monaco,Consolas;
+      font‑size:13px;
+      background:var(--code);
+      color:var(--code‑fg);
+      padding:8px 10px;
+      border‑radius:6px;
+      overflow‑x:auto;
+    }
+    button{
+      padding:7px 12px;
+      border‑radius:6px;
+      border:1px solid var(--border);
+      background:var(--card);
+      color:var(--fg);
+      cursor:pointer;
+      white‑space:nowrap;
+    }
+    button:hover{filter:brightness(1.15)}
+    .tip{font‑size:0.9rem;color:#8b949e;margin‑top:6px}
+    footer{margin‑top:40px;font‑size:0.85rem;color:#8b949e}
+  </style>
+</head>
+<body>
+<header>
+  <h1>vanlia‑blocklist</h1>
+  <p class="desc">多厂商广告、遥测、追踪域名拦截列表，兼容 uBlock‑Origin / AdGuard / Pi‑hole</p>
+  <p>仓库：<a target="_blank" href="https://github.com/zhangparker‑ou824/vanlia‑blocklist">github.com/zhangparker‑ou824/vanlia‑blocklist</a></p>
+</header>
+
+<div class="card">
+  <h3>📦 订阅链接（raw）</h3>
+  <div class="item">
+    <div class="url‑box" id="u‑yahoo‑all">https://raw.githubusercontent.com/zhangparker‑ou824/vanlia‑blocklist/blocklist/yahoo/yahoo‑all.txt</div>
+    <button onclick="copy('u‑yahoo‑all')">复制</button>
+  </div>
+  <div class="tip">yahoo‑all.txt：广告+追踪遥测（可能破坏部分Yahoo服务）</div>
+
+  <div class="item">
+    <div class="url‑box" id="u‑yahoo‑ads">https://raw.githubusercontent.com/zhangparker‑ou824/vanlia‑blocklist/blocklist/yahoo/yahoo‑ads.txt</div>
+    <button onclick="copy('u‑yahoo‑ads')">复制</button>
+  </div>
+  <div class="tip">yahoo‑ads.txt：仅广告域名，破坏性更小</div>
+</div>
+
+<div class="card">
+  <h3>ℹ 使用说明</h3>
+  <ul style="padding‑left:20px;margin‑top:8px">
+    <li>uBlock‑Origin：设置 → 过滤器 → 导入，粘贴 raw 链接</li>
+    <li>AdGuard Home：过滤器 → 添加自定义过滤器</li>
+    <li>Pi‑hole：添加为自定义 blocklist</li>
+  </ul>
+  <div class="tip">⚠️ 本项目为个人维护，存在随时停更风险；使用风险由使用者自行承担。</div>
+</div>
+
+<footer>vanlia‑blocklist © 2026 | Powered by GitHub Pages</footer>
+
+<script>
+function copy(id){
+  const el = document.getElementById(id);
+  const text = el.innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = el.nextElementSibling;
+    const old = btn.innerText;
+    btn.innerText = "已复制!";
+    setTimeout(()=>btn.innerText = old,1200);
+  })
+}
+</script>
+</body>
+</html>
