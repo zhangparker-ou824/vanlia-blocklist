@@ -1,0 +1,7 @@
+ad.weibo.com
+tui.weibo.com
+adapp.biz.weibo.com
+adsvideo.biz.weibo.com
+s3adm.ad.weibo.com
+alitui.weibo.com.cn
+biz.weibo.com.cn
