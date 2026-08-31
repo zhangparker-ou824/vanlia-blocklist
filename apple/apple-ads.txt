@@ -1,0 +1,14 @@
+advertising.apple.com
+iadsdk.apple.com
+ca.iadsdk.apple.com
+stats.apple.com
+xp.apple.com
+feedback.apple.com
+radarsubmissions.apple.com
+app-analytics-services.com
+ppq.apple.com
+acfeedbackws.icloud.com
+icloudads.net
+appleworldwidedeveloper.hb-api.omtrdc.net
+appleworldwidedeveloper.sc.omtrdc.net
+beatselectronicsllc.tt.omtrdc.net

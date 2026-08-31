@@ -1,0 +1,8 @@
+weibo.com
+www.weibo.com
+m.weibo.com
+passport.weibo.com
+api.weibo.com
+weibo.com.cn
+weibo.cn
+t.cn
