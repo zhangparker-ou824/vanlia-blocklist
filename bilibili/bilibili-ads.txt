@@ -1,0 +1,15 @@
+e.bilibili.com
+api.bilibili.com/x/vip/ads/materials
+api.bilibili.com/x/vip/ads/material/report
+api.bilibili.com/x/v2/dm/ad
+api.bilibili.com/pgc/season/player/cards
+api.bilibili.com/x/web-show/wbi/res/locs
+app.bilibili.com/x/v2/splash/show
+app.bilibili.com/x/v2/splash/list
+app.bilibili.com/x/v2/search/defaultwords
+app.bilibili.com/bilibili.app.interface.v1.Search/Default
+app.bilibili.com/x/resource/top/activity
+api.vc.bilibili.com/search_svr/v\d/Search/recommend_words
+api.vc.bilibili.com/topic_svr/v1/topic_svr
+api.live.bilibili.com/xlive/open-interface/v2/tracker
+tracker.chat.bilibili.com
